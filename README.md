@@ -98,13 +98,24 @@ curl --location 'https://api.eazyrag.com/v1/answer' \
      }
 }'
 ```
-
+**Answer with stream**
+```
+curl --location 'https://api.eazyrag.com/v1/answer' \
+--header 'Authorization: <Your token>' \
+--header 'Content-Type: application/json' \
+--data '{
+    "query":"When was Bun released?",
+    "collection": "example",
+    "stream":true
+}'
+```
 
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | query | string | User question
 | collection | string | Name of the collection |
 | filter | object | Filter the chunks or documents based on metadata. You can use any key from the metadata that you already used while indexing the content (Optional)| 
+| stream | boolean | If true, the answer will be streamed as soon as it is available (Optional). The stream will end with chunk "[DONE]"|
 | $match | <ul> <li>string</li> <li>number</li> <li>string[]</li> <li>number[]</li> <ul>| Match the value of the key |
 
 ### 3. Retrieve relevant chunks (Soon)
