@@ -110,6 +110,26 @@ curl --location 'https://api.eazyrag.com/v1/answer' \
 }'
 ```
 
+**Answer generation in browser**
+
+We also support answer generation in the browser, but you should use a client-side key which starts with 'ck-<Your client-side key>'. You can find your client-side key in your dashboard.
+https://eazyrag.com/dashboard/tokens
+
+```
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "ck-<Your client side key>");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+};
+
+fetch("https://api.eazyrag.com/v1/answer?query=What is bun?&collection=bun_docs&stream=false", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | query | string | User question
